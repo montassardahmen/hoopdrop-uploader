@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#eef5ff" />
+  <title>HoopDrop — Basketball File Uploader</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <main class="app-shell">
+    <header class="topbar">
+      <a class="brand" href="#" aria-label="HoopDrop home">
+        <span class="brand-mark">H</span><span>Hoop<span class="brand-light">Drop</span></span>
+      </a>
+      <span class="uploaded-pill"><span class="status-dot"></span> Uploaded <strong id="uploadCount">0</strong></span>
+    </header>
+
+    <section class="workspace">
+      <div class="intro">
+        <div>
+          <p class="eyebrow">A fresh way to send your files</p>
+          <h1>Upload files<span>.</span></h1>
+          <p class="subtitle">Drag and drop your files, or take the shot.</p>
+        </div>
+        <div class="quick-actions">
+          <button class="button button-primary" id="browseButton" type="button">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7.5A2.5 2.5 0 0 1 6.5 5h3l2 2h6A2.5 2.5 0 0 1 20 9.5v7a2.5 2.5 0 0 1-2.5 2.5h-11A2.5 2.5 0 0 1 4 16.5z"/><path d="M4 10h16"/></svg>
+            Browse files
+          </button>
+          <button class="button button-ghost" id="cameraButton" type="button">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 8.5A2.5 2.5 0 0 1 6.5 6h2l1.2-1.5h4.6L15.5 6h2A2.5 2.5 0 0 1 20 8.5v9a2.5 2.5 0 0 1-2.5 2.5h-11A2.5 2.5 0 0 1 4 17.5z"/><circle cx="12" cy="13" r="3.2"/></svg>
+            Take the shot
+          </button>
+          <input id="fileInput" type="file" multiple hidden />
+          <input id="cameraInput" type="file" accept="image/*" capture="environment" hidden />
+        </div>
+      </div>
+
+      <div class="court" id="dropZone">
+        <div class="court-lines"></div>
+        <div class="drop-card" id="dropCard">
+          <div class="upload-symbol">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 16V4m0 0L7.5 8.5M12 4l4.5 4.5"/><path d="M5 14v4.5A1.5 1.5 0 0 0 6.5 20h11a1.5 1.5 0 0 0 1.5-1.5V14"/></svg>
+          </div>
+          <h2>Drop files here</h2>
+          <p>or take the shot</p>
+          <div class="mini-hoop" aria-hidden="true">
+            <div class="backboard"></div>
+            <div class="rim"></div>
+            <div class="net"><i></i><i></i><i></i><i></i><i></i></div>
+          </div>
+          <span class="drop-hint">PDF, images, documents and more</span>
+        </div>
+        <div class="ball" id="ball" aria-hidden="true"><span></span></div>
+        <div class="trajectory" aria-hidden="true"></div>
+        <div class="court-caption" id="courtCaption">Your next upload is a slam dunk.</div>
+        <div class="floating-file" aria-hidden="true">
+          <div class="file-icon"><span class="file-fold"></span><b>PDF</b></div>
+        </div>
+        <div class="success-badge" id="successBadge">Nice shot! <span>✓</span></div>
+      </div>
+
+      <section class="file-section" aria-live="polite">
+        <div class="section-heading">
+          <div><h3>Your files</h3><p id="fileSummary">Nothing uploaded yet</p></div>
+          <button class="clear-button" id="clearButton" type="button" disabled>Clear all</button>
+        </div>
+        <div class="file-list" id="fileList">
+          <div class="empty-state" id="emptyState">
+            <span class="empty-icon">＋</span>
+            <span>Your files will appear here</span>
+          </div>
+        </div>
+      </section>
+      <footer>Made to make file sharing feel like a game <span>🏀</span></footer>
+    </section>
+  </main>
+  <div class="toast" id="toast" role="status"></div>
+  <script src="script.js"></script>
+</body>
+</html>
